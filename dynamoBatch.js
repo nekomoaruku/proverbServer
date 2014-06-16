@@ -8,3 +8,16 @@ client.newScanBuilder(config.db)
   .then(function (data) {
     console.log(data);
   });
+
+client.putItem(config.db, {
+  id: '001002',
+  sheet: 1,
+  attr1: 'hogehoge',
+  attr2: 'hogehoge',
+  attr3: 'hogehoge'
+  })
+  .execute()
+  .then(function() {
+    console.log('test');
+  });
+
