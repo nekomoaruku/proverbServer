@@ -3,9 +3,9 @@ var config = require('../../lib/config');
 
 var sampleProverbs = [
   {
-    "id": "001001",
-    "number": "001",
-    "sheet": "001",
+    "id": "001023",
+    "number": 23,
+    "sheet": 1,
 
     "proverb": "天才とは99%の努力と\n1%のひらめきである",
     "quiz": "天才とは#{quiz}%の努力と#{quiz}%のひらめきである",
