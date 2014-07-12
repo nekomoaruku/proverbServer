@@ -1,5 +1,7 @@
 var config = require('./lib/config');
 var Dynamite = require('dynamite');
+var AWS = require('aws-sdk');
+AWS.config.update(config.aws);
 
 var client = new Dynamite.Client(config.aws);
 
@@ -7,17 +9,10 @@ client.newScanBuilder(config.db)
   .execute()
   .then(function (data) {
     console.log(data);
+    console.log('--------------------');
   });
 
-client.putItem(config.db, {
-  id: '001002',
-  sheet: 1,
-  attr1: 'hogehoge',
-  attr2: 'hogehoge',
-  attr3: 'hogehoge'
-  })
-  .execute()
-  .then(function() {
-    console.log('test');
-  });
-
+var s3 = new AWS.S3();
+s3.listBuckets(function(err, data) {
+  console.log(data);
+});

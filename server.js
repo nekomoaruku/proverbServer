@@ -6,12 +6,16 @@ var app = express();
 // Middleware
 app.use(bodyParser.json());
 
-// Setting
-app.set('jwtSecret', config.jwtSecret);
-
 // Simple logger
 app.use(function(req, res, next) {
   console.log('%s %s', req.method, req.url);
+  next();
+});
+
+app.all('/*', function(req, res, next) {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Methods','POST, GET, OPTIONS, DELETE, PUT, HEAD');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
   next();
 });
 
